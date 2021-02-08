@@ -1,22 +1,35 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
+import math
 from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number < 0:
+        number = number*-1
+
+    return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
+    noms = []
+    for i in range(len(prefixes)):
+        nom = prefixes[i] + suffixe
+        noms.append(nom)
 
-    return [""]
+    return noms
 
 
 def prime_integer_summation() -> int:
-    return 0
+    nombres_premier = 0
+    for number in range(100):
+        for i in range(2, number):
+            if number % i != 0:
+                nombres_premier += number
+
+    return nombres_premier
 
 
 def factorial(number: int) -> int:
