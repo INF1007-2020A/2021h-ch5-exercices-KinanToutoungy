@@ -33,11 +33,20 @@ def prime_integer_summation() -> int:
 
 
 def factorial(number: int) -> int:
-    return 0
+    i = 0
+    facto = 1
+    while i < number:
+        facto *= number-i
+        i += 1
+    return facto
 
 
 def use_continue() -> None:
-    pass
+    for i in range(10):
+        if i == 5:
+            continue
+        else:
+            print(i)
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
