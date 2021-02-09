@@ -23,21 +23,28 @@ def use_prefixes() -> List[str]:
 
 
 def prime_integer_summation() -> int:
-    nombres_premier = 0
-    for number in range(100):
-        for i in range(2, number):
-            if number % i != 0:
-                nombres_premier += number
+    nombre = 6
+    nombres_premier = [2, 3, 5]
 
-    return nombres_premier
+    while len(nombres_premier) < 100:
+        premier = True
+        for i in range(2, int(nombre**0.5)+1):
+            if nombre % i == 0:
+                premier = False
+                break
+        if premier:
+            nombres_premier.append(nombre)
+        nombre += 1
+
+    return sum(nombres_premier)
 
 
 def factorial(number: int) -> int:
     i = 0
     facto = 1
-    while i < number:
+    for i in range(number):
         facto *= number-i
-        i += 1
+
     return facto
 
 
@@ -50,7 +57,28 @@ def use_continue() -> None:
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    acceptance = []
+    for group in groups:
+        if len(group) > 10 or len(group) <= 3:
+            acceptance.append(False)
+            continue
+        if 25 in group:
+            acceptance.append(True)
+            continue
+
+        if 50 in group:
+            is_50 = True
+        else:
+            is_50 = False
+
+        is_accepted = True
+        for age in group:
+            if (age < 18) or (is_50 and age > 70):
+                is_accepted = False
+                break
+
+        acceptance.append(is_accepted)
+    return acceptance
 
 
 def main() -> None:
